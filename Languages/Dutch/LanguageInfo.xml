@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageInfo>
+  <friendlyNameNative>Dutch</friendlyNameNative>
+  <friendlyNameEnglish>Dutch</friendlyNameEnglish>
+  <canBeTiny>true</canBeTiny>
+  <languageWorkerClass>LanguageWorker_Dutch</languageWorkerClass>
+  <credits>
+    <li Class="CreditRecord_Role">
+      <roleKey>Credit_Writer</roleKey>
+      <creditee>Squirting Elephant</creditee>
+    </li>
+  </credits>
+</LanguageInfo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<SEPD_Drill_ChunkSandstone.label>砂岩を掘る</SEPD_Drill_ChunkSandstone.label>
+	<SEPD_Drill_ChunkSandstone.description>砂岩を掘る</SEPD_Drill_ChunkSandstone.label>
+	<SEPD_Drill_ChunkSandstone.jobString>砂岩を掘っています</SEPD_Drill_ChunkSandstone.jobString>
+
+	<SEPD_Drill_ChunkGranite.label>花こう岩を掘る</SEPD_Drill_ChunkGranite.label>
+	<SEPD_Drill_ChunkGranite.description>花こう岩を掘る</SEPD_Drill_ChunkGranite.label>
+	<SEPD_Drill_ChunkGranite.jobString>花こう岩を掘っています</SEPD_Drill_ChunkGranite.jobString>
+	
+	<SEPD_Drill_ChunkLimestone.label>石灰岩を掘る</SEPD_Drill_ChunkLimestone.label>
+	<SEPD_Drill_ChunkLimestone.description>石灰岩を掘る</SEPD_Drill_ChunkLimestone.label>
+	<SEPD_Drill_ChunkLimestone.jobString>石灰岩を掘っています</SEPD_Drill_ChunkLimestone.jobString>
+	
+	<SEPD_Drill_ChunkSlate.label>粘板岩を掘る</SEPD_Drill_ChunkSlate.label>
+	<SEPD_Drill_ChunkSlate.description>粘板岩を掘る</SEPD_Drill_ChunkSlate.label>
+	<SEPD_Drill_ChunkSlate.jobString>粘板岩を掘っています</SEPD_Drill_ChunkSlate.jobString>
+	
+	<SEPD_Drill_ChunkMarble.label>大理石を掘る</SEPD_Drill_ChunkMarble.label>
+	<SEPD_Drill_ChunkMarble.description>大理石を掘る</SEPD_Drill_ChunkMarble.label>
+	<SEPD_Drill_ChunkMarble.jobString>大理石を掘っています</SEPD_Drill_ChunkMarble.jobString>
+	
+</LanguageData>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<SEPD_ModName>Planetary Drill</SEPD_ModName>
+
+	<!-- Settings -->
+	<SEPD_SettingsCategory>プラネットドリル</SEPD_SettingsCategory>
+	<SEPD_DrillResearchCost>リサーチコスト</SEPD_DrillResearchCost>
+	<SEPD_DrillPowerConsumption>消費パワー</SEPD_DrillPowerConsumption>
+	<SEPD_FilterDestroyOnDrop>フィルター ドロップ時に破壊する？</SEPD_FilterDestroyOnDrop>
+	<SEPD_FilterMadeFromStuff>フィルター 材料から作成する？</SEPD_FilterMadeFromStuff>
+	<SEPD_FilterRottable>フィルター 産物?</SEPD_FilterRottable>
+	<SEPD_FilterScatterableOnMapGen>フィルター マップジェネレーター上に非配置？</SEPD_FilterScatterableOnMapGen>
+	
+	<SEPD_WorkAmount>仕事量</SEPD_WorkAmount>
+	<SEPD_YieldAmount>産出量</SEPD_YieldAmount>
+	<SEPD_Drillable>ドリル可能なもの</SEPD_Drillable>
+	<SEPD_RestartRequiredDrillable>"ドリル可能なもの"の変更を調べるには、全ゲームのリスタートが要求されます。</SEPD_RestartRequiredDrillable>
+	<SEPD_AddDrillable>ドリル可能なものを追加</SEPD_AddDrillable>
+	<SEPD_RemoveDrillable>ドリル可能なものを削除</SEPD_RemoveDrillable>
+	<SEPD_ResetDrillables>ドリル可能なものをリセット</SEPD_ResetDrillables>
+	<SEPD_OpenConfigFolder>設定フォルダーを開く</SEPD_OpenConfigFolder>
+	<SEPD_FirstRunMessage>プラネットドリル: 最初の実行が確認され、ドリル可能なものの設定がリセットされました。</SEPD_FirstRunMessage>
+	<SEPD_OreMissingWarning>プラネットドリル　ユーザーがドリルできるように設定されているアイテムが見つかりましたが、そのアイテムは　Rimworld　データベースに見つかりません。この mod から鉱石/アイテムを削除せずに mod をアンインストールしましたか？
+</SEPD_OreMissingWarning>
+	<SEPD_RebootMessage>ドリル可能なものを追加・削除したい場合には、Rimworld　をリスタートしてください。</SEPD_RebootMessage>
+</LanguageData>

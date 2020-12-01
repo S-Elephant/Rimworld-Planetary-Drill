@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<SE_PlanetaryDrill.label>planetary drill</SE_PlanetaryDrill.label>
+	<SE_PlanetaryDrill.description>Drill out resources from the inner planet. Does NOT create infestations. This drill is affected by colonist and robot skills.</SE_PlanetaryDrill.description>
+
+</LanguageData>

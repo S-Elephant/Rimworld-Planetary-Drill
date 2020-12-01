@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+   <ResearchProjectDef>
+    <defName>PlanetaryDrilling</defName>
+    <label>planetary drilling</label>
+    <description>Enables the construction of Planetary Drills.</description>
+    <baseCost>17500</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>DeepDrilling</li>
+    </prerequisites>
+	<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+    <researchViewX>17</researchViewX>
+    <researchViewY>9</researchViewY>
+  </ResearchProjectDef>
+  
+</Defs>

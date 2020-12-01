@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<SEPD_Drill_ChunkSandstone.label>drill sandstone</SEPD_Drill_ChunkSandstone.label>
+	<SEPD_Drill_ChunkSandstone.description>drill sandstone.</SEPD_Drill_ChunkSandstone.label>
+	<SEPD_Drill_ChunkSandstone.jobString>Drilling sandstone.</SEPD_Drill_ChunkSandstone.jobString>
+
+	<SEPD_Drill_ChunkGranite.label>drill granite</SEPD_Drill_ChunkGranite.label>
+	<SEPD_Drill_ChunkGranite.description>drill granite.</SEPD_Drill_ChunkGranite.label>
+	<SEPD_Drill_ChunkGranite.jobString>Drilling granite.</SEPD_Drill_ChunkGranite.jobString>
+	
+	<SEPD_Drill_ChunkLimestone.label>drill limestone</SEPD_Drill_ChunkLimestone.label>
+	<SEPD_Drill_ChunkLimestone.description>drill limestone.</SEPD_Drill_ChunkLimestone.label>
+	<SEPD_Drill_ChunkLimestone.jobString>Drilling limestone.</SEPD_Drill_ChunkLimestone.jobString>
+	
+	<SEPD_Drill_ChunkSlate.label>drill slate</SEPD_Drill_ChunkSlate.label>
+	<SEPD_Drill_ChunkSlate.description>drill slate.</SEPD_Drill_ChunkSlate.label>
+	<SEPD_Drill_ChunkSlate.jobString>Drilling slate.</SEPD_Drill_ChunkSlate.jobString>
+	
+	<SEPD_Drill_ChunkMarble.label>drill marble</SEPD_Drill_ChunkMarble.label>
+	<SEPD_Drill_ChunkMarble.description>drill marble.</SEPD_Drill_ChunkMarble.label>
+	<SEPD_Drill_ChunkMarble.jobString>Drilling marble.</SEPD_Drill_ChunkMarble.jobString>
+	
+</LanguageData>

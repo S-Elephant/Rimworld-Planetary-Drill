@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+	<SEPD_Drill_ChunkSandstone.label>boor drill zandsteen</SEPD_Drill_ChunkSandstone.label>
+	<SEPD_Drill_ChunkSandstone.description>boor drill zandsteen.</SEPD_Drill_ChunkSandstone.label>
+	<SEPD_Drill_ChunkSandstone.jobString>Boor drill zandsteen.</SEPD_Drill_ChunkSandstone.jobString>
+
+	<SEPD_Drill_ChunkGranite.label>boor graniet</SEPD_Drill_ChunkGranite.label>
+	<SEPD_Drill_ChunkGranite.description>boor graniet.</SEPD_Drill_ChunkGranite.label>
+	<SEPD_Drill_ChunkGranite.jobString>Boor graniet.</SEPD_Drill_ChunkGranite.jobString>
+	
+	<SEPD_Drill_ChunkLimestone.label>boor kalksteen</SEPD_Drill_ChunkLimestone.label>
+	<SEPD_Drill_ChunkLimestone.description>boor kalksteen.</SEPD_Drill_ChunkLimestone.label>
+	<SEPD_Drill_ChunkLimestone.jobString>Boor kalksteen.</SEPD_Drill_ChunkLimestone.jobString>
+	
+	<SEPD_Drill_ChunkSlate.label>boor leisteen</SEPD_Drill_ChunkSlate.label>
+	<SEPD_Drill_ChunkSlate.description>boor leisteen.</SEPD_Drill_ChunkSlate.label>
+	<SEPD_Drill_ChunkSlate.jobString>Boor leisteen.</SEPD_Drill_ChunkSlate.jobString>
+	
+	<SEPD_Drill_ChunkMarble.label>boor marmer</SEPD_Drill_ChunkMarble.label>
+	<SEPD_Drill_ChunkMarble.description>boor marmer.</SEPD_Drill_ChunkMarble.label>
+	<SEPD_Drill_ChunkMarble.jobString>Boor marmer.</SEPD_Drill_ChunkMarble.jobString>
+	
+</LanguageData>

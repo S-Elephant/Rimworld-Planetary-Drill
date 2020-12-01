@@ -1,0 +1,48 @@
+<ModMetaData>
+	<name>Planetary Drill</name>
+	<author>Squirting Elephant</author>
+	<supportedVersions>
+		<li>1.1</li>
+		<li>1.2</li>
+	</supportedVersions>
+	<packageId>SquirtingElephant.PlanetaryDrill</packageId>
+	<loadAfter>
+		<li>Ludeon.RimWorld</li>
+		<li>Ludeon.RimWorld.Royalty</li>
+		<li>GT.Sam.GlitterTech</li>
+	</loadAfter>
+	<description>Adds a Planetary Drill that can infinitely drill all ores. Titanium is also supported and if you need support for ores from other mods, please let me know and I'll add it.
+This version also comes with a settings menu so you can balance your own gameplay. You can even remove most ores completely from the drill if you want.
+
+Note that this mod will eventually replace all of my other Drill mods.
+
+Can drill:
+- Steel.
+- Plasteel.
+- Uranium.
+- Jade.
+- Silver (disabled by default).
+- Gold.
+- Titanium (only drillable if the Glitterworld Tech mod is active).
+- Components (disabled by default).
+- Advanced Components (disabled by default).
+- Sandstone chunks.
+- Granite chunks.
+- Limestone chunks.
+- Slate chunks.
+- Marble chunks.
+
+Supports languages:
+- Dutch
+- English
+- Japanese
+
+Technical info:
+- Mod uses XML and C#. This mod does NOT use HugsLib or any other dependency, it's completely standalone.
+- Can be safely added to an existing game.
+- Before removing this mod from an existing game, please make sure that you destroyed all structures from this mod first, stop any research in progress from this mod and that you are not ordering the creation of new structures from this mod. Also make sure that you destroyed any minified structures from this mod (if any) and that you do not have any pawns with a work-order for the Planetary Drill.
+
+Supported mods:
+- Glitter Tech.
+- Misc Robots++.</description>
+</ModMetaData>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>SE_PlanetaryDrill</defName>
+		<label>planetary drill</label>
+		<description>Drill out resources from the inner planet. Does NOT create infestations and is not affected by the mining skill of the colonist operating it. This drill is affected by colonist and robot skills.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<designationCategory>Production</designationCategory>
+		<size>(4,4)</size>
+		<rotatable>true</rotatable>
+		<fillPercent>0.75</fillPercent>
+		<passability>Impassable</passability>
+		<blockWind>true</blockWind>
+		<statBases>
+			<MaxHitPoints>600</MaxHitPoints>
+			<WorkToBuild>24000</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>-30</Beauty>
+			<Mass>180</Mass>
+		</statBases>
+		<comps>
+		  <li Class="CompProperties_Forbiddable"/>
+		  <li Class="CompProperties_Flickable"/>
+		  <li Class="CompProperties_Power">
+			<compClass>CompPowerTrader</compClass>
+			<basePowerConsumption>5000</basePowerConsumption>
+		  </li>
+		</comps>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(1,0,-2)</interactionCellOffset>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<costList>
+			<Steel>3250</Steel>
+			<Plasteel>475</Plasteel>
+			<Gold>150</Gold>
+		</costList>
+		<recipes /> <!-- Warning: The C# code overwrites the contents of this node so don't fill/use it here. -->
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<building>
+			<uninstallWork>2700</uninstallWork>
+		</building>
+		<thingCategories>
+		  <li>BuildingsProduction</li>
+		</thingCategories>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<altitudeLayer>Building</altitudeLayer>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<graphicData>
+			<texPath>PlanetaryDrill/PlanetaryDrill</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(4,4)</drawSize>
+			<drawRotated>false</drawRotated>
+		</graphicData>
+		<researchPrerequisites>
+			<li>PlanetaryDrilling</li>
+		</researchPrerequisites>
+	</ThingDef>
+	
+</Defs>

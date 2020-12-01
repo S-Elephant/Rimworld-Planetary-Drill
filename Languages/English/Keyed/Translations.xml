@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<SEPD_ModName>Planetary Drill</SEPD_ModName>
+
+	<!-- Settings -->
+	<SEPD_SettingsCategory>Planetary Drill</SEPD_SettingsCategory>
+	<SEPD_DrillResearchCost>research cost</SEPD_DrillResearchCost>
+	<SEPD_DrillPowerConsumption>power consumption</SEPD_DrillPowerConsumption>
+	<SEPD_FilterDestroyOnDrop>filter destroy-on-drop?</SEPD_FilterDestroyOnDrop>
+	<SEPD_FilterMadeFromStuff>filter made-from-stuff?</SEPD_FilterMadeFromStuff>
+	<SEPD_FilterRottable>filter rottables?</SEPD_FilterRottable>
+	<SEPD_FilterScatterableOnMapGen>filter non-scatterable-on-map-gen?</SEPD_FilterScatterableOnMapGen>
+	
+	<SEPD_WorkAmount>work amount</SEPD_WorkAmount>
+	<SEPD_YieldAmount>yield amount</SEPD_YieldAmount>
+	<SEPD_Drillable>drillable</SEPD_Drillable>
+	<SEPD_RestartRequiredDrillable>Changing any of the "Drillable" checks requires a full game restart.</SEPD_RestartRequiredDrillable>
+	<SEPD_AddDrillable>add drillable</SEPD_AddDrillable>
+	<SEPD_RemoveDrillable>remove drillable</SEPD_RemoveDrillable>
+	<SEPD_ResetDrillables>reset drillables</SEPD_ResetDrillables>
+	<SEPD_OpenConfigFolder>open config folder</SEPD_OpenConfigFolder>
+	<SEPD_FirstRunMessage>Planetary Drill: First run detected, resetting drillable settings.</SEPD_FirstRunMessage>
+	<SEPD_OreMissingWarning>Planetary Drill: Found an item that was set to be drillable by the user but the item can't be found in the Rimworld database (anymore). Perhaps you uninstalled a mod w/o removing its ore/item from this mod?</SEPD_OreMissingWarning>
+	<SEPD_RebootMessage>please restart Rimworld if you add and/or remove drillables.</SEPD_RebootMessage>
+</LanguageData>

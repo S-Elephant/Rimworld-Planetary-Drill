@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<SEPD_ModName>Planetary Drill</SEPD_ModName>
+
+	<!-- Settings -->
+	<SEPD_SettingsCategory>Planetary Drill</SEPD_SettingsCategory>
+	<SEPD_DrillResearchCost>onderzoekskosten</SEPD_DrillResearchCost>
+	<SEPD_DrillPowerConsumption>stroom consumptie</SEPD_DrillPowerConsumption>
+	<SEPD_FilterDestroyOnDrop>filter vernietig-indien-gevallen?</SEPD_FilterDestroyOnDrop>
+	<SEPD_FilterMadeFromStuff>filter gemaakt-van?</SEPD_FilterMadeFromStuff>
+	<SEPD_FilterRottable>filter 'dat-kan-rotten'?</SEPD_FilterRottable>
+	<SEPD_FilterScatterableOnMapGen>filter non-verstrooibaar-wanneer-map-gen?</SEPD_FilterScatterableOnMapGen>
+	
+	<SEPD_WorkAmount>hoeveelheid werk</SEPD_WorkAmount>
+	<SEPD_YieldAmount>opbrengst hoeveelheid</SEPD_YieldAmount>
+	<SEPD_Drillable>boorbaar</SEPD_Drillable>
+	<SEPD_RestartRequiredDrillable>Het veranderen van een boorbaar check vereist een game herstart.</SEPD_RestartRequiredDrillable>
+	<SEPD_AddDrillable>voeg boorbaar toe</SEPD_AddDrillable>
+	<SEPD_RemoveDrillable>verwijder boorbaar</SEPD_RemoveDrillable>
+	<SEPD_ResetDrillables>reset boorbaren</SEPD_ResetDrillables>
+	<SEPD_OpenConfigFolder>open config folder</SEPD_OpenConfigFolder>
+	<SEPD_FirstRunMessage>Planetary Drill: Eerst run gedetecteerd, de game reset nu de boorbaar instellingen.</SEPD_FirstRunMessage>
+	<SEPD_OreMissingWarning>Planetary Drill: Een item is gevonden die als boorbaar is gemarkeerd maar het item kon nie twordne gevonden in de Rimworld database. Mogelijk de-installeerde u een mod zonder dat u het boorbaar item eerst verwijderde?</SEPD_OreMissingWarning>
+	<SEPD_RebootMessage>Herstart Rimworld aub. indien u boorbaren toevoegt/verwijderd.</SEPD_RebootMessage>
+</LanguageData>
