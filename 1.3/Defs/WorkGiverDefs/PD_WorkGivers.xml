@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+<!-- ================================ Planetary Mining ================================ -->
+
+	<WorkGiverDef>
+		<defName>DoBillsPlanetaryMine</defName>
+		<label>drill items from the inner planet</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Mining</workType>
+		<priorityInType>100</priorityInType>
+		<verb>mine</verb>
+		<fixedBillGiverDefs>
+			<li>SE_PlanetaryDrill</li>
+		</fixedBillGiverDefs>
+		<gerund>mining</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+		
+<!-- ================================ End ================================ -->
+	
+</Defs>
