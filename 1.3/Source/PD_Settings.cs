@@ -24,6 +24,7 @@ namespace SquirtingElephant.PlanetaryDrill
         private const int WORK_AMOUNT_MAX = 100000;
         private const int YIELD_AMOUNT_MIN = 1;
         private const float ROW_HEIGHT = 32f;
+        private const float ROW_PADDING = 10f;
         private const float ICON_SIZE = ROW_HEIGHT;
         private const float SCROLL_VIEW_PADDING_HORIZONTAL = 10f;
         
@@ -34,9 +35,11 @@ namespace SquirtingElephant.PlanetaryDrill
             Settings = GetSettings<SettingsData>();
         }
 
+        private float GetScrollViewHeight() => (Settings.Drillables.Values.Count + 1) * (ROW_HEIGHT + ROW_PADDING);
+
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            var ls = new Listing_Standard();
+            Listing_Standard ls = new Listing_Standard();
             ls.Begin(inRect);
             
             CreateRegularSettings(ls);
@@ -50,7 +53,7 @@ namespace SquirtingElephant.PlanetaryDrill
                 inRect.x + SCROLL_VIEW_PADDING_HORIZONTAL,
                 inRect.y,
                 inRect.width - 2* SCROLL_VIEW_PADDING_HORIZONTAL,
-                inRect.height);
+                GetScrollViewHeight());
             Widgets.BeginScrollView(new Rect(0, drillableScrollStart_Y, inRect.width, inRect.height - drillableScrollStart_Y - ROW_HEIGHT), ref ScrollPosition, scrollViewRect);
             CreateDrillableHeaders();
             
