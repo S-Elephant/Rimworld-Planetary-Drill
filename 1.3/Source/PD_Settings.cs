@@ -10,8 +10,8 @@ namespace SquirtingElephant.PlanetaryDrill
         #region Fields
         
         public static SettingsData Settings;
-        private Vector2 ScrollPosition = Vector2.zero;
-        private Rect ViewRect = new Rect(0.0f, 0.0f, 100.0f, 10000.0f);
+        private Vector2 _scrollPosition = Vector2.zero;
+        private Rect _viewRect = new Rect(0.0f, 0.0f, 100.0f, 10000.0f);
 
         public static TableData Table = new TableData(
             new Vector2(10f, 0f), new Vector2(10f, 10f),
@@ -45,7 +45,7 @@ namespace SquirtingElephant.PlanetaryDrill
             CreateRegularSettings(ls);
             CreateOpenConfigFolderButton();
             ls.GapLine();
-            float drillableScrollStart_Y = CreateDrillableButtons(ls) + 12f + ROW_HEIGHT;
+            float drillableScrollStartY = CreateDrillableButtons(ls) + 12f + ROW_HEIGHT;
             CreateRebootNote(ls);
 
             #region Drillables Scroll View
@@ -54,7 +54,7 @@ namespace SquirtingElephant.PlanetaryDrill
                 inRect.y,
                 inRect.width - 2* SCROLL_VIEW_PADDING_HORIZONTAL,
                 GetScrollViewHeight());
-            Widgets.BeginScrollView(new Rect(0, drillableScrollStart_Y, inRect.width, inRect.height - drillableScrollStart_Y - ROW_HEIGHT), ref ScrollPosition, scrollViewRect);
+            Widgets.BeginScrollView(new Rect(0, drillableScrollStartY, inRect.width, inRect.height - drillableScrollStartY - ROW_HEIGHT), ref _scrollPosition, scrollViewRect);
             CreateDrillableHeaders();
             
             int rowIdx = 1;
@@ -71,13 +71,13 @@ namespace SquirtingElephant.PlanetaryDrill
             base.DoSettingsWindowContents(inRect);
         }
 
-        private void CreateRebootNote(Listing_Standard ls)
+        private static void CreateRebootNote(Listing_Standard ls)
         {
             Rect rowRect = ls.GetRect(ROW_HEIGHT);
             Widgets.Label(rowRect, "SEPD_RebootMessage".Translate().CapitalizeFirst());
         }
 
-        private void CreateRegularSettings(Listing_Standard ls)
+        private static void CreateRegularSettings(Listing_Standard ls)
         {
             Utils.MakeTextFieldNumericLabeled(ls, "SEPD_DrillResearchCost", ref Settings.DrillResearchCost, 1, 100000);
             Utils.MakeTextFieldNumericLabeled(ls, "SEPD_DrillPowerConsumption", ref Settings.DrillPowerConsumption, 1, 50000);
@@ -88,13 +88,13 @@ namespace SquirtingElephant.PlanetaryDrill
             Utils.MakeCheckboxLabeled(ls, "SEPD_FilterScatterableOnMapGen", ref Settings.FilterScatterableOnMapGen);
         }
 
-        private void CreateDrillableHeaders()
+        private static void CreateDrillableHeaders()
         {
             Widgets.Label(Table.GetHeaderRect(1), "SEPD_WorkAmount".Translate().CapitalizeFirst());
             Widgets.Label(Table.GetHeaderRect(2), "SEPD_YieldAmount".Translate().CapitalizeFirst());
         }
 
-        private void CreateOpenConfigFolderButton()
+        private static void CreateOpenConfigFolderButton()
         {
             string modconfigFolderPath = Utils.GetModSettingsFolderPath();
             if (Widgets.ButtonText(new Rect(0, 5, 200, BUTTON_HEIGHT), "SEPD_OpenConfigFolder".Translate().CapitalizeFirst(), active: System.IO.Directory.Exists(modconfigFolderPath)))
@@ -106,7 +106,7 @@ namespace SquirtingElephant.PlanetaryDrill
         /// </summary>
         private float CreateDrillableButtons(Listing_Standard ls)
         {
-            var buttonRow = ls.GetRect(BUTTON_HEIGHT);
+            Rect buttonRow = ls.GetRect(BUTTON_HEIGHT);
 
             Rect addDrillableBtnRect =  new Rect(buttonRow.x, buttonRow.y, buttonRow.width / 3, buttonRow.height);
             Rect removeDrillableBtnRect = new Rect(addDrillableBtnRect.xMax, addDrillableBtnRect.y, addDrillableBtnRect.width, addDrillableBtnRect.height);
@@ -119,13 +119,13 @@ namespace SquirtingElephant.PlanetaryDrill
             return addDrillableBtnRect.yMax;
         }
 
-        private Rect GetSliderField(int colIdx, int rowIdx)
+        private static Rect GetSliderField(int colIdx, int rowIdx)
         {
             Rect field = Table.GetFieldRect(colIdx, rowIdx);
             return new Rect(field.x + NUMERIC_INPUT_WIDTH + 2, field.y, field.width - NUMERIC_INPUT_WIDTH - 2, field.height);
         }
 
-        private void CreateDrillableSettingsFields(DrillData dd, int rowIdx)
+        private static void CreateDrillableSettingsFields(DrillData dd, int rowIdx)
         {
             // Icon
             Widgets.ThingIcon(Table.GetFieldRect(0, rowIdx).Replace_Width(ICON_SIZE), dd.ThingDefToDrill);
@@ -153,7 +153,7 @@ namespace SquirtingElephant.PlanetaryDrill
         }
 
         #region Create Drillable Buttons
-        private void CreateAndAddDrillableButton(Rect inRect)
+        private static void CreateAndAddDrillableButton(Rect inRect)
         {
             if (!Widgets.ButtonText(inRect, "SEPD_AddDrillable".Translate().CapitalizeFirst(), active: Mineables.AllMineables.Except(Settings.Drillables.Values.Select(d => d.ThingDefToDrill)).Any()))
                 return;
