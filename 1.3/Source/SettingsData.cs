@@ -73,7 +73,7 @@ namespace SquirtingElephant.PlanetaryDrill
             AddDefaultDrillable("Uranium", 7000, 20);
             AddDefaultDrillable("Gold", 7250, 15);
 
-            Global.ApplySettingsToDefs();
+            PD_Settings.ApplySettingsToDefs();
         }
 
         private void AddDefaultDrillable(string thingDefName, int workAmount, int yieldAmount)

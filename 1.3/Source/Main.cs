@@ -18,7 +18,10 @@ namespace SquirtingElephant.PlanetaryDrill
                 PD_Settings.Settings.IsFirstRun = false;
                 PD_Settings.Settings.ResetDrillableSettings();
             }
-            Global.ApplySettingsToDefs();
+            else
+                PD_Settings.RemoveInvalidSettings();
+            
+            PD_Settings.ApplySettingsToDefs();
         }
     }
 }

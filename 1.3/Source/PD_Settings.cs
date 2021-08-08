@@ -1,5 +1,7 @@
-﻿using SquirtingElephant.Helpers;
+﻿using System.Collections.Generic;
+using SquirtingElephant.Helpers;
 using System.Linq;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -11,7 +13,6 @@ namespace SquirtingElephant.PlanetaryDrill
         
         public static SettingsData Settings;
         private Vector2 _scrollPosition = Vector2.zero;
-        private Rect _viewRect = new Rect(0.0f, 0.0f, 100.0f, 10000.0f);
 
         public static TableData Table = new TableData(
             new Vector2(10f, 0f), new Vector2(10f, 10f),
@@ -35,18 +36,18 @@ namespace SquirtingElephant.PlanetaryDrill
             Settings = GetSettings<SettingsData>();
         }
 
-        private float GetScrollViewHeight() => (Settings.Drillables.Values.Count + 1) * (ROW_HEIGHT + ROW_PADDING);
+        private float GetScrollViewHeight() => (Settings.Drillables.Values.Count + 2) * (ROW_HEIGHT + ROW_PADDING);
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
             Listing_Standard ls = new Listing_Standard();
             ls.Begin(inRect);
             
-            CreateRegularSettings(ls);
-            CreateOpenConfigFolderButton();
+            SettingsRenderer.CreateRegularSettings(ls, Settings);
+            SettingsRenderer.CreateOpenConfigFolderButton(BUTTON_HEIGHT);
             ls.GapLine();
-            float drillableScrollStartY = CreateDrillableButtons(ls) + 12f + ROW_HEIGHT;
-            CreateRebootNote(ls);
+            float drillableScrollStartY = SettingsRenderer.CreateDrillableButtons(ls, BUTTON_HEIGHT, ref Table, Settings) + 12f + ROW_HEIGHT;
+            SettingsRenderer.CreateRebootNote(ls, ROW_HEIGHT);
 
             #region Drillables Scroll View
             Rect scrollViewRect = new Rect(
@@ -55,140 +56,57 @@ namespace SquirtingElephant.PlanetaryDrill
                 inRect.width - 2* SCROLL_VIEW_PADDING_HORIZONTAL,
                 GetScrollViewHeight());
             Widgets.BeginScrollView(new Rect(0, drillableScrollStartY, inRect.width, inRect.height - drillableScrollStartY - ROW_HEIGHT), ref _scrollPosition, scrollViewRect);
-            CreateDrillableHeaders();
+            SettingsRenderer.CreateDrillableHeaders(Table);
             
-            int rowIdx = 1;
-            foreach (DrillData dd in Settings.Drillables.Values)
-                CreateDrillableSettingsFields(dd, rowIdx++);
+            int rowIdx = 2;
+            foreach (var kvp in Settings.Drillables)
+            {
+                DrillData dd = kvp.Value;
+                if (dd == null)
+                {
+                    Settings.Drillables.Remove(kvp.Key);
+                    Debug.LogWarning($"Planetary Drill: Removed drillable \"{kvp.Key}\" because it no longer exists (did you remove the mod or did it update?).");
+                }
+                else
+                    SettingsRenderer.CreateDrillableSettingsFields(dd, rowIdx++, ref Table, ICON_SIZE, NUMERIC_INPUT_WIDTH, WORK_AMOUNT_MIN, WORK_AMOUNT_MAX, YIELD_AMOUNT_MIN);
+            }
 
             ls.GetRect(Table.TableRect.height);
 
             Widgets.EndScrollView();
             #endregion
             ls.End();
-            Global.ApplySettingsToDefs();
+            ApplySettingsToDefs();
 
             base.DoSettingsWindowContents(inRect);
         }
 
-        private static void CreateRebootNote(Listing_Standard ls)
+        public static void ApplySettingsToDefs()
         {
-            Rect rowRect = ls.GetRect(ROW_HEIGHT);
-            Widgets.Label(rowRect, "SEPD_RebootMessage".Translate().CapitalizeFirst());
-        }
+            Utils.SetResearchBaseCost("PlanetaryDrilling", PD_Settings.Settings.DrillResearchCost);
 
-        private static void CreateRegularSettings(Listing_Standard ls)
-        {
-            Utils.MakeTextFieldNumericLabeled(ls, "SEPD_DrillResearchCost", ref Settings.DrillResearchCost, 1, 100000);
-            Utils.MakeTextFieldNumericLabeled(ls, "SEPD_DrillPowerConsumption", ref Settings.DrillPowerConsumption, 1, 50000);
-
-            Utils.MakeCheckboxLabeled(ls, "SEPD_FilterDestroyOnDrop", ref Settings.FilterDestroyOnDrop);
-            Utils.MakeCheckboxLabeled(ls, "SEPD_FilterMadeFromStuff", ref Settings.FilterMadeFromStuff);
-            Utils.MakeCheckboxLabeled(ls, "SEPD_FilterRottable", ref Settings.FilterRottable);
-            Utils.MakeCheckboxLabeled(ls, "SEPD_FilterScatterableOnMapGen", ref Settings.FilterScatterableOnMapGen);
-        }
-
-        private static void CreateDrillableHeaders()
-        {
-            Widgets.Label(Table.GetHeaderRect(1), "SEPD_WorkAmount".Translate().CapitalizeFirst());
-            Widgets.Label(Table.GetHeaderRect(2), "SEPD_YieldAmount".Translate().CapitalizeFirst());
-        }
-
-        private static void CreateOpenConfigFolderButton()
-        {
-            string modconfigFolderPath = Utils.GetModSettingsFolderPath();
-            if (Widgets.ButtonText(new Rect(0, 5, 200, BUTTON_HEIGHT), "SEPD_OpenConfigFolder".Translate().CapitalizeFirst(), active: System.IO.Directory.Exists(modconfigFolderPath)))
-                Utils.OpenModSettingsFolder();
-        }
-
-        /// <summary>
-        /// Creates the drillable buttons and returns the bottom location of those buttons.
-        /// </summary>
-        private float CreateDrillableButtons(Listing_Standard ls)
-        {
-            Rect buttonRow = ls.GetRect(BUTTON_HEIGHT);
-
-            Rect addDrillableBtnRect =  new Rect(buttonRow.x, buttonRow.y, buttonRow.width / 3, buttonRow.height);
-            Rect removeDrillableBtnRect = new Rect(addDrillableBtnRect.xMax, addDrillableBtnRect.y, addDrillableBtnRect.width, addDrillableBtnRect.height);
-            Rect resetDrillableBtnRect = new Rect(removeDrillableBtnRect.xMax, addDrillableBtnRect.y, addDrillableBtnRect.width, addDrillableBtnRect.height);
-
-            CreateAndAddDrillableButton(addDrillableBtnRect);
-            CreateRemoveDrillableButton(removeDrillableBtnRect);
-            CreateResetDrillableButton(resetDrillableBtnRect);
-
-            return addDrillableBtnRect.yMax;
-        }
-
-        private static Rect GetSliderField(int colIdx, int rowIdx)
-        {
-            Rect field = Table.GetFieldRect(colIdx, rowIdx);
-            return new Rect(field.x + NUMERIC_INPUT_WIDTH + 2, field.y, field.width - NUMERIC_INPUT_WIDTH - 2, field.height);
-        }
-
-        private static void CreateDrillableSettingsFields(DrillData dd, int rowIdx)
-        {
-            // Icon
-            Widgets.ThingIcon(Table.GetFieldRect(0, rowIdx).Replace_Width(ICON_SIZE), dd.ThingDefToDrill);
-
-            // ThingDef.label
-            Widgets.Label(Table.GetFieldRect(0, rowIdx).Add_X(ICON_SIZE + 2), dd.ThingDefToDrill.label);
-
-            // Work Amount
-            string bufferWorkAmount = dd.WorkAmount.ToString();
-            Widgets.TextFieldNumeric(Table.GetFieldRect(1, rowIdx).Replace_Width(NUMERIC_INPUT_WIDTH), ref dd.WorkAmount, ref bufferWorkAmount, WORK_AMOUNT_MIN, WORK_AMOUNT_MAX);
-            int count = (int)Widgets.HorizontalSlider(GetSliderField(1, rowIdx), dd.WorkAmount, WORK_AMOUNT_MIN, WORK_AMOUNT_MAX);
-            if (count != dd.WorkAmount)
-                dd.WorkAmount = count;
-
-            // Yield Amount
-            string bufferYieldAmount = dd.YieldAmount.ToString();
-            Widgets.TextFieldNumeric(Table.GetFieldRect(2, rowIdx).Replace_Width(NUMERIC_INPUT_WIDTH), ref dd.YieldAmount, ref bufferYieldAmount, YIELD_AMOUNT_MIN, dd.MaxYieldAmount);
-            int countYield = (int)Widgets.HorizontalSlider(GetSliderField(2, rowIdx), dd.YieldAmount, YIELD_AMOUNT_MIN, dd.MaxYieldAmount);
-            if (countYield != dd.YieldAmount)
-                dd.YieldAmount = countYield;
-
-            // Row Mouse Hover
-            Table.ApplyMouseOverEntireRow(rowIdx);
-            TooltipHandler.TipRegion(Table.GetRowRect(rowIdx).LeftHalf(), dd.ThingDefToDrill.description);
-        }
-
-        #region Create Drillable Buttons
-        private static void CreateAndAddDrillableButton(Rect inRect)
-        {
-            if (!Widgets.ButtonText(inRect, "SEPD_AddDrillable".Translate().CapitalizeFirst(), active: Mineables.AllMineables.Except(Settings.Drillables.Values.Select(d => d.ThingDefToDrill)).Any()))
-                return;
+            ThingDef planetaryDrillDef = Utils.GetDefByDefName<ThingDef>("SE_PlanetaryDrill");
+            if (planetaryDrillDef != null)
             {
-                Find.WindowStack.Add(new FloatMenu(
-                    Mineables.AllMineables
-                        .Where(Settings.CanItemBeDrilledAccordingToSettings)
-                        .Except(Settings.Drillables.Values.Select(d=>d.ThingDefToDrill)) // Don't display items that were already added.
-                        .Select(m => new FloatMenuOption(m.label, () => Settings.Drillables.Add(m.defName, new DrillData(m.defName, 1000, 1)), m))
-                        .ToList()));
+                IEnumerable<RecipeDef> dds = PD_Settings.Settings.Drillables.Values.Select(dd => dd.CreateDrillRecipe());
+                planetaryDrillDef.recipes = dds.ToList();
+
+                planetaryDrillDef.comps.OfType<CompProperties_Power>().First().basePowerConsumption = PD_Settings.Settings.DrillPowerConsumption;
             }
         }
 
-        private static void CreateRemoveDrillableButton(Rect inRect)
+        public static void RemoveInvalidSettings()
         {
-            if (!Widgets.ButtonText(inRect, "SEPD_RemoveDrillable".Translate().CapitalizeFirst(), active: Settings.Drillables.Any()))
-                return;
-            
-            Find.WindowStack.Add(new FloatMenu(
-                Settings.Drillables
-                    .Select(kvp => new FloatMenuOption(kvp.Value.ThingDefToDrill.label, () => Settings.Drillables.Remove(kvp.Key), kvp.Value.ThingDefToDrill))
-                    .ToList()));
-            Table.Rows.Remove(Table.Rows.Last());
-        }
+            List<KeyValuePair<string, DrillData>> invalidDrillableKeyPairs = Settings.Drillables
+                .Where(keyValuePair => keyValuePair.Value == null || !keyValuePair.Value.ThingDefExists())
+                .ToList();
 
-        private void CreateResetDrillableButton(Rect inRect)
-        {
-            if (Widgets.ButtonText(inRect, "SEPD_ResetDrillables".Translate().CapitalizeFirst()))
+            foreach (KeyValuePair<string, DrillData> invalidKvp in invalidDrillableKeyPairs)
             {
-                while (Table.Rows.Count > 1)
-                    Table.Rows.Remove(Table.Rows.Last());
-                Settings.ResetDrillableSettings();
+                Settings.Drillables.Remove(invalidKvp.Key);
+                Debug.LogWarning($"Planetary Drill: Removed drillable \"{invalidKvp.Key}\" because it no longer exists (did you remove the mod or did it update?).");
             }
         }
-        #endregion
 
         public override string SettingsCategory() => "SEPD_SettingsCategory".Translate();
     }

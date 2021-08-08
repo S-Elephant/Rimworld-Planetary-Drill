@@ -87,6 +87,8 @@ namespace SquirtingElephant.PlanetaryDrill
             return drillRecipe;
         }
 
+        public bool ThingDefExists() => Utils.DefExistsByDefName<ThingDef>(ThingDefToDrillName);
+
         private List<ThingDefCountClass> CreateProducts() => new List<ThingDefCountClass> { new ThingDefCountClass(ThingDefToDrill, YieldAmount) };
 
         private RecipeDef CreateDrillRecipeDef()

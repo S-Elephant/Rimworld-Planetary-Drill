@@ -12,26 +12,7 @@
 		<li>Ludeon.RimWorld.Royalty</li>
 		<li>GT.Sam.GlitterTech</li>
 	</loadAfter>
-	<description>Adds a Planetary Drill that can infinitely drill all ores. Titanium is also supported and if you need support for ores from other mods, please let me know and I'll add it.
-This version also comes with a settings menu so you can balance your own gameplay. You can even remove most ores completely from the drill if you want.
-
-Note that this mod will eventually replace all of my other Drill mods.
-
-Can drill:
-- Steel.
-- Plasteel.
-- Uranium.
-- Jade.
-- Silver (disabled by default).
-- Gold.
-- Titanium (only drillable if the Glitterworld Tech mod is active).
-- Components (disabled by default).
-- Advanced Components (disabled by default).
-- Sandstone chunks.
-- Granite chunks.
-- Limestone chunks.
-- Slate chunks.
-- Marble chunks.
+	<description>Ever wanted to drill ALL items that exist in the game, including items added by other mods? Now you can! Has an extensive dynamic settings menu so you can balance your own gameplay.
 
 Supports languages:
 - Dutch
@@ -45,5 +26,6 @@ Technical info:
 
 Supported mods:
 - Glitter Tech.
-- Misc Robots++.</description>
+- Misc Robots++.
+- And many more.</description>
 </ModMetaData>
