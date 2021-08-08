@@ -5,6 +5,7 @@
 
 	<!-- Settings -->
 	<SEPD_SettingsCategory>Planetary Drill</SEPD_SettingsCategory>
+	<SEPD_DrillSteelCost>staal kost</SEPD_DrillSteelCost>
 	<SEPD_DrillResearchCost>onderzoekskosten</SEPD_DrillResearchCost>
 	<SEPD_DrillPowerConsumption>stroom consumptie</SEPD_DrillPowerConsumption>
 	<SEPD_FilterDestroyOnDrop>filter vernietig-indien-gevallen?</SEPD_FilterDestroyOnDrop>

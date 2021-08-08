@@ -5,6 +5,7 @@
 
 	<!-- Settings -->
 	<SEPD_SettingsCategory>Planetary Drill</SEPD_SettingsCategory>
+	<SEPD_DrillSteelCost>steel cost</SEPD_DrillSteelCost>
 	<SEPD_DrillResearchCost>research cost</SEPD_DrillResearchCost>
 	<SEPD_DrillPowerConsumption>power consumption</SEPD_DrillPowerConsumption>
 	<SEPD_FilterDestroyOnDrop>filter destroy-on-drop?</SEPD_FilterDestroyOnDrop>

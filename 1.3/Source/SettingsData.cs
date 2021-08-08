@@ -11,6 +11,7 @@ namespace SquirtingElephant.PlanetaryDrill
         #region Fields
         
         public bool IsFirstRun = true;
+        public int DrillSteelCost = 3250;
         public int DrillResearchCost = 17500;
         public int DrillPowerConsumption = 5000;
 
@@ -33,6 +34,7 @@ namespace SquirtingElephant.PlanetaryDrill
         {
             Scribe_Values.Look(ref IsFirstRun, "SEPD_IsFirstRun", true);
 
+            Scribe_Values.Look(ref DrillResearchCost, "SEPD_DrillSteelCost", 3250);
             Scribe_Values.Look(ref DrillResearchCost, "SEPD_DrillResearchCost", 17500);
             Scribe_Values.Look(ref DrillPowerConsumption, "SEPD_DrillPowerConsumption", 5000);
 

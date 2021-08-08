@@ -83,11 +83,12 @@ namespace SquirtingElephant.PlanetaryDrill
 
         public static void ApplySettingsToDefs()
         {
-            Utils.SetResearchBaseCost("PlanetaryDrilling", PD_Settings.Settings.DrillResearchCost);
+            Utils.SetResearchBaseCost("PlanetaryDrilling", Settings.DrillResearchCost);
 
             ThingDef planetaryDrillDef = Utils.GetDefByDefName<ThingDef>("SE_PlanetaryDrill");
             if (planetaryDrillDef != null)
             {
+                Utils.SetThingSteelCost("SE_PlanetaryDrill", Settings.DrillSteelCost);
                 IEnumerable<RecipeDef> dds = PD_Settings.Settings.Drillables.Values.Select(dd => dd.CreateDrillRecipe());
                 planetaryDrillDef.recipes = dds.ToList();
 

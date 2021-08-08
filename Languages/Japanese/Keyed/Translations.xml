@@ -5,6 +5,7 @@
 
 	<!-- Settings -->
 	<SEPD_SettingsCategory>プラネットドリル</SEPD_SettingsCategory>
+	<SEPD_DrillSteelCost>鉄鋼コスト</SEPD_DrillSteelCost>
 	<SEPD_DrillResearchCost>リサーチコスト</SEPD_DrillResearchCost>
 	<SEPD_DrillPowerConsumption>消費パワー</SEPD_DrillPowerConsumption>
 	<SEPD_FilterDestroyOnDrop>フィルター ドロップ時に破壊する？</SEPD_FilterDestroyOnDrop>

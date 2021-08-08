@@ -9,6 +9,7 @@ namespace SquirtingElephant.PlanetaryDrill
     {
         public static void CreateRegularSettings(Listing_Standard ls, SettingsData settings)
         {
+            Utils.MakeTextFieldNumericLabeled(ls, "SEPD_DrillSteelCost", ref settings.DrillSteelCost, 1, 50000);
             Utils.MakeTextFieldNumericLabeled(ls, "SEPD_DrillResearchCost", ref settings.DrillResearchCost, 1, 100000);
             Utils.MakeTextFieldNumericLabeled(ls, "SEPD_DrillPowerConsumption", ref settings.DrillPowerConsumption, 1, 50000);
 
